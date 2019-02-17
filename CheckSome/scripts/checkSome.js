@@ -3,6 +3,7 @@ $(document).ready(function () {
     localStorage["urlCounter"] = 0;
   }
   renderURLList();
+  getCurrentTabInfo();
 });
 
 $('#addURLButton').click(function () {
@@ -20,7 +21,6 @@ $('#addURLButton').click(function () {
       url: url,
       dataType: "html",
       success: function (data) {
-        console.log("success!");
         urlCounter = localStorage["urlCounter"];
         localStorage["url" + urlCounter] = url;
         console.log(localStorage["url" + urlCounter] + ' has been saved');
@@ -163,6 +163,12 @@ $('#resetButton').click(function () {
   $('#deleteAllStatus').html("Deleted All.")
 });
 
+function getCurrentTabInfo() {
+  chrome.tabs.query({ 'active': true, 'currentWindow': true }, function (tabs) {
+    $('#urlInput').val(tabs[0].url);
+  });
+}
+
 function removeElement(data, elementOpen, elementClose) {
   var usefulData = data;
   var parsedData = "";
@@ -250,3 +256,5 @@ function renderURLList() {
     $('#urlList').html("<p>There are no URLs.</p>");
   }
 }
+
+//Todo: Move to cheerio

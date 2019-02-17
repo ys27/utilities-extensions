@@ -6,7 +6,7 @@ $(document).ready(function () {
   }
   checkExpiryRange();
   renderBookmarkList();
-  autoCurrent();
+  getCurrentTabInfo();
 });
 
 $('#notificationRangeInput').ready(function () {
@@ -131,7 +131,7 @@ function renderBookmarkList() {
   }
 }
 
-function autoCurrent() {
+function getCurrentTabInfo() {
   chrome.tabs.query({ 'active': true, 'currentWindow': true }, function (tabs) {
     $('#urlInput').val(tabs[0].url);
     $('#titleInput').val(tabs[0].title);
