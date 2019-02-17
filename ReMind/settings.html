@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='UTF-8'>
+
+		<script src='../scripts/libs/jquery-3.1.1.min.js'></script>
+		<script src='../scripts/libs/popper.min.js'></script>
+		<script src='../scripts/libs/bootstrap.min.js'></script>
+		<link rel='stylesheet' href='../styles/libs/bootstrap.min.css'/>
+
+		<link href='https://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet'>
+		<link rel='stylesheet' href='styles/index.css'>
+	</head>
+	<body>
+		<div class="redirectButtons">
+			<button class="btn btn-primary" id="homePage">&#60; Home</button>
+		</div>
+		<div>
+			<h3 class="title">Settings</h3>
+			<div class="setting">
+				<label>Count for how many days in advance?</label>
+				<input type="number" id="notificationRangeInput">
+				<button class="btn btn-success" id="notificationRangeButton">Update</button>
+			</div>
+			<button class="btn btn-warning" id="passwordButton">Password</button>
+			<button class="btn btn-danger" id="resetButton">Delete All Bookmarks</button>
+			<div class="deleteAllStatus" id="deleteAllStatus"></div>
+		</div>
+	</body>
+	<script src="scripts/reMind.js"></script>
+</html>

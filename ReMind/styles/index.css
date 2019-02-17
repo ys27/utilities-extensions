@@ -1,0 +1,76 @@
+body {
+	display: flex;
+	flex-direction: column;
+	margin: 5px;
+	padding: 5px;
+	font-family: 'PT Mono', monospace;
+	font-size: 13px;
+	width: 350px;
+	min-height: 80px;
+	background-color: #D8D9E4;
+	font-family: 'Raleway', sans-serif;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+}
+
+.settings {
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+}
+
+.title {
+	font-weight: bold;
+}
+
+.nav {
+	margin-bottom: 10px;
+}
+
+#addBookmark {
+	display: none;
+}
+
+button {
+	width: 100%;
+}
+
+.bookmark {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	border-top: 1px solid black;
+}
+
+.addBookmark {
+	display: flex;
+	flex-direction: column;
+}
+
+.inputGroup {
+	display: flex;
+}
+
+.addFields, .setting {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 10px;
+}
+
+.addStatus {
+	margin: auto;
+}
+
+.redirectButtons {
+	margin-bottom: 5px;
+}
+
+.bookmarkList {
+	display: flex;
+	flex-direction: column;
+}

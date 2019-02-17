@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='UTF-8'>
+
+        <script src='../scripts/libs/jquery-3.1.1.min.js'></script>
+        <script src='../scripts/libs/popper.min.js'></script>
+        <script src='../scripts/libs/bootstrap.min.js'></script>
+        <link rel='stylesheet' href='../styles/libs/bootstrap.min.css'/>
+
+        <link href='https://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet'>
+        <link rel='stylesheet' href='styles/index.css'>
+    </head>
+	<body>
+		<div>
+			<div class="header">
+				<h3 class="title">ReMind</h3>
+				<a class="settings" id="settingsPage"><img src="../imgs/gear.png"/></a>
+			</div>
+            <p>Save bookmarks with date constraints. No more: "Why did I save this?, or "Oops, that expired."</p>
+            <ul class="nav nav-pills nav-fill">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#" data-toggle="pill" id="showPage">Bookmarks</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="pill" id="addPage">Add Bookmark</a>
+                </li>
+            </ul>
+            <div id="bookmarkList">
+                <div>
+                    <h4 class="subtitle">Active</h4>
+                    <div id="activeBookmarkList" class="bookmarkList"></div>
+                </div>
+                <div>
+                    <h4 class="subtitle">Expired</h4>
+                    <div id="expiredBookmarkList" class="bookmarkList"></div>
+                </div>
+            </div>
+            <div class="addBookmark" id="addBookmark">
+                    <div class="addFields">
+                        <label>URL:</label>
+                        <input type="text" class="input" id="urlInput" autofocus="autofocus">
+                    </div>
+                    <div class="addFields">
+                        <label>Title:</label>
+                        <input type="text" class="input" id="titleInput">
+                    </div>
+                    <div class="addFields">
+                        <label>Remind Date:</label>
+                        <input type="date" id="remindDateInput">
+                    </div>
+                    <button class="btn btn-success" id="addBookmarkButton">Add</button>
+                    <div class="addStatus" id="addStatus"></div>
+                </div>
+		</div>
+    </body>
+    <script src="scripts/reMind.js"></script>
+</html>
