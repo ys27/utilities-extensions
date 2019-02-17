@@ -16,7 +16,7 @@ $('#notificationRangeInput').ready(function() {
 
 $('#addBookmarkButton').click(function() {
   $('#addStatus').html("<p>Adding... Do not make any changes.</p>");
-  const url = $('#urlInput').val();
+  let url = $('#urlInput').val();
   const title = $('#titleInput').val();
   const date = $('#remindDateInput').val();
   if (!url.startsWith("http")) {
@@ -67,8 +67,13 @@ $("#remindDateInput").keyup(function(event){
     }
 });
 
+$('#indexPage').click(function() {
+  window.location = "../Main/index.html"
+});
+
 $('#settingsPage').click(function() {
-  window.location = "settings.html";
+  $('#settings').show();
+  $('#ReMind').hide();
   checkExpiryRange();
 });
 
@@ -83,7 +88,8 @@ $('#showPage').click(function() {
 });
 
 $('#homePage').click(function() {
-  window.location = "index.html";
+  $('#ReMind').show();
+  $('#settings').hide();
 });
 
 $('#resetButton').click(function() {

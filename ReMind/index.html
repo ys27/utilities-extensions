@@ -3,19 +3,22 @@
     <head>
         <meta charset='UTF-8'>
 
-        <script src='../scripts/libs/jquery-3.1.1.min.js'></script>
-        <script src='../scripts/libs/popper.min.js'></script>
-        <script src='../scripts/libs/bootstrap.min.js'></script>
-        <link rel='stylesheet' href='../styles/libs/bootstrap.min.css'/>
+        <script src='../Main/scripts/libs/jquery-3.1.1.min.js'></script>
+        <script src='../Main/scripts/libs/popper.min.js'></script>
+        <script src='../Main/scripts/libs/bootstrap.min.js'></script>
+        <link rel='stylesheet' href='../Main/styles/libs/bootstrap.min.css'/>
 
         <link href='https://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet'>
         <link rel='stylesheet' href='styles/index.css'>
     </head>
 	<body>
-		<div>
+		<div id="ReMind">
 			<div class="header">
-				<h3 class="title">ReMind</h3>
-				<a class="settings" id="settingsPage"><img src="../imgs/gear.png"/></a>
+                <h3 class="title">ReMind</h3>
+                <div>
+                    <a class="icon" id="indexPage"><img src="../Main/imgs/home.png"/></a>
+                    <a class="icon" id="settingsPage"><img src="../Main/imgs/gear.png"/></a>
+                </div>
 			</div>
             <p>Save bookmarks with date constraints. No more: "Why did I save this?, or "Oops, that expired."</p>
             <ul class="nav nav-pills nav-fill">
@@ -52,7 +55,20 @@
                     <button class="btn btn-success" id="addBookmarkButton">Add</button>
                     <div class="addStatus" id="addStatus"></div>
                 </div>
-		</div>
+        </div>
+        <div id="settings">
+            <div class="header">
+                <h3 class="title">Settings</h3>
+                <a class="icon" id="homePage"><img src="../Main/imgs/home.png"/></a>
+            </div>
+            <div class="setting">
+                <label>Count for how many days in advance?</label>
+                <input type="number" id="notificationRangeInput">
+                <button class="btn btn-success" id="notificationRangeButton">Update</button>
+            </div>
+            <button class="btn btn-danger" id="resetButton">Delete All Bookmarks</button>
+            <div class="deleteAllStatus" id="deleteAllStatus"></div>
+        </div>
     </body>
     <script src="scripts/reMind.js"></script>
 </html>

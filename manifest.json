@@ -1,16 +1,16 @@
 {
 	"manifest_version": 2,
-	"name": "ys27Ext",
-	"short_name": "ys27Ext",
+	"name": "utilities-extensions",
+	"short_name": "utilities-extensions",
 	"version": "1.0.0",
 	"description": "Random functionalities I need.",
 	"icons": {
-		"48": "imgs/icon.png",
-		"96": "imgs/icon.png"
+		"48": "Main/imgs/icon.png",
+		"96": "Main/imgs/icon.png"
 	},
 	"browser_action": {
-		"default_icon": "imgs/icon.png",
-		"default_popup": "index.html"
+		"default_icon": "Main/imgs/icon.png",
+		"default_popup": "Main/index.html"
 	},
 	"permissions": [
 		"activeTab",

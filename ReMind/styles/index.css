@@ -8,7 +8,6 @@ body {
 	width: 350px;
 	min-height: 80px;
 	background-color: #D8D9E4;
-	font-family: 'Raleway', sans-serif;
 }
 
 .header {
@@ -16,10 +15,13 @@ body {
 	justify-content: space-between;
 }
 
-.settings {
+.icon {
+	cursor: pointer;
+}
+
+.icon img {
 	width: 30px;
 	height: 30px;
-	cursor: pointer;
 }
 
 .title {
@@ -30,7 +32,7 @@ body {
 	margin-bottom: 10px;
 }
 
-#addBookmark {
+#addBookmark, #settings {
 	display: none;
 }
 
@@ -64,10 +66,6 @@ button {
 
 .addStatus {
 	margin: auto;
-}
-
-.redirectButtons {
-	margin-bottom: 5px;
 }
 
 .bookmarkList {

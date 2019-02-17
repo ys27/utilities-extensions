@@ -8,7 +8,6 @@ body {
 	width: 350px;
 	min-height: 80px;
 	background-color: #D8D9E4;
-	font-family: 'Raleway', sans-serif;
 }
 
 button {
@@ -31,7 +30,7 @@ button {
 	font-weight: bold;
 }
 
-.icon {
+.contentIcon {
 	height: 96px;
 }
 
