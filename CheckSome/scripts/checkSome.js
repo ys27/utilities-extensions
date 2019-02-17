@@ -138,7 +138,6 @@ $('#indexPage').click(function () {
 $('#settingsPage').click(function () {
   $('#settings').show();
   $('#CheckSome').hide();
-  checkExpiryRange();
 });
 
 $('#homePage').click(function () {
