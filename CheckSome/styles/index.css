@@ -1,0 +1,89 @@
+body {
+	display: flex;
+	flex-direction: column;
+	margin: 5px;
+	padding: 5px;
+	font-family: 'PT Mono', monospace;
+	font-size: 13px;
+	width: 350px;
+	min-height: 80px;
+	background-color: #D8D9E4;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+}
+
+.icon {
+	cursor: pointer;
+}
+
+.icon img {
+	width: 30px;
+	height: 30px;
+}
+
+.title {
+	font-weight: bold;
+}
+
+#addURL, #settings {
+	display: none;
+}
+
+.nav {
+	margin-bottom: 10px;
+}
+
+.checkURL {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	border-top: 1px solid black;
+}
+
+.addURL {
+	display: flex;
+	flex-direction: column;
+}
+
+input[type="radio"] {
+	margin-bottom: 5px;
+}
+
+.inputGroup {
+	display: flex;
+}
+
+.addFields {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 10px;
+}
+
+.addStatus {
+	margin: auto;
+}
+
+.redirectButtons {
+	margin-bottom: 5px;
+}
+
+.urlList {
+	display: flex;
+	flex-direction: column;
+}
+
+.checkInfo {
+	display: flex;
+}
+
+.checkStatusInfo {
+	position: absolute;
+	margin-left: 200px;
+	margin-top: 20px;
+	font-weight: bold;
+}
