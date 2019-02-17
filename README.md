@@ -8,4 +8,4 @@ A bookmarking extension that notifies you when you should take a look at them ag
 You can set an expiry date for each bookmark.
 
 ## CheckSome
-Checks a site for any string without having to visit it.
+Simplifies the checking of any text on any public domain.
