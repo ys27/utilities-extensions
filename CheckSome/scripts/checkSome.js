@@ -1,6 +1,6 @@
 $(document).ready(function () {
-  if (isNaN(localStorage["urlCounter"])) {
-    localStorage["urlCounter"] = 0;
+  if (isNaN(localStorage["CheckSome::urlCounter"])) {
+    localStorage["CheckSome::urlCounter"] = 0;
   }
   renderURLList();
   getCurrentTabInfo();
@@ -21,29 +21,29 @@ $('#addURLButton').click(function () {
       url: url,
       dataType: "html",
       success: function (data) {
-        urlCounter = localStorage["urlCounter"];
-        localStorage["url" + urlCounter] = url;
-        console.log(localStorage["url" + urlCounter] + ' has been saved');
-        localStorage["urlCounter"] = parseInt(urlCounter) + 1;
+        urlCounter = localStorage["CheckSome::urlCounter"];
+        localStorage["CheckSome::url" + urlCounter] = url;
+        console.log(localStorage["CheckSome::url" + urlCounter] + ' has been saved');
+        localStorage["CheckSome::urlCounter"] = parseInt(urlCounter) + 1;
         var checkString;
-        localStorage["url" + urlCounter + "CheckType"] = checkType;
+        localStorage["CheckSome::url" + urlCounter + "CheckType"] = checkType;
         switch (checkType) {
           case "exist":
-            localStorage["url" + urlCounter + "CheckTypeString"] = "exists.";
+            localStorage["CheckSome::url" + urlCounter + "CheckTypeString"] = "exists.";
             break;
           case "notExist":
-            localStorage["url" + urlCounter + "CheckTypeString"] = "doesn't exist.";
+            localStorage["CheckSome::url" + urlCounter + "CheckTypeString"] = "doesn't exist.";
             break;
           case "regex":
-            localStorage["url" + urlCounter + "CheckTypeString"] = "exists by regex.";
+            localStorage["CheckSome::url" + urlCounter + "CheckTypeString"] = "exists by regex.";
             break;
           default:
             console.log("Unknown CheckType!");
             break;
         }
         checkString = $(`#${checkType}`).val();
-        localStorage["url" + urlCounter + "CheckString"] = checkString;
-        localStorage["url" + urlCounter + "CheckStatus"] = "Unknown";
+        localStorage["CheckSome::url" + urlCounter + "CheckString"] = checkString;
+        localStorage["CheckSome::url" + urlCounter + "CheckStatus"] = "Unknown";
         $('#addStatus').html("<p style='font-weight:bold; font-size: 150%;'>Added!</p>");
         setTimeout(function () {
           $('#addStatus').empty();
@@ -83,21 +83,21 @@ $('#urlList').on('click', 'button', function () {
 
         var dataCheck = existCheck(data, urlNumber);
         if (dataCheck) {
-          localStorage["url" + urlNumber + "CheckStatus"] = "Exists!";
+          localStorage["CheckSome::url" + urlNumber + "CheckStatus"] = "Exists!";
           // alert("Exists!")
         }
         else {
-          localStorage["url" + urlNumber + "CheckStatus"] = "Does not exist!";
+          localStorage["CheckSome::url" + urlNumber + "CheckStatus"] = "Does not exist!";
           // alert("Does not exist!")
         }
-        $('#checkStatus' + urlNumber).html(localStorage["url" + urlNumber + "CheckStatus"]);
+        $('#checkStatus' + urlNumber).html(localStorage["CheckSome::url" + urlNumber + "CheckStatus"]);
         setTimeout(function () {
           $('#checkStatus' + urlNumber).empty();
         }, 3000);
-        // if (parsedData != localStorage["url" + $(this).attr('key') + "Data"]) {
+        // if (parsedData != localStorage["CheckSome::url" + $(this).attr('key') + "Data"]) {
         //   alert("Different!");
-        //   localStorage["url" + $(this).attr('key') + "Data"] = parsedData;
-        //   console.log(localStorage["url" + $(this).attr('key') + "Data"]);
+        //   localStorage["CheckSome::url" + $(this).attr('key') + "Data"] = parsedData;
+        //   console.log(localStorage["CheckSome::url" + $(this).attr('key') + "Data"]);
         // }
         // else {
         //   alert("Same");
@@ -158,7 +158,7 @@ $('#showPage').click(function () {
 });
 
 $('#resetButton').click(function () {
-  localStorage["urlCounter"] = 0;
+  localStorage["CheckSome::urlCounter"] = 0;
   $('#deleteAllStatus').html("Deleted All.")
 });
 
@@ -202,12 +202,12 @@ function removeElement(data, elementOpen, elementClose) {
 // }
 
 function existCheck(data, urlNumber) {
-  return (data.search(localStorage["url" + urlNumber + "CheckString"]) > 0);
+  return (data.search(localStorage["CheckSome::url" + urlNumber + "CheckString"]) > 0);
 }
 
 function checkData(data, urlNumber) {
   var dataCheck;
-  var checkType = localStorage["url" + urlNumber + "CheckType"];
+  var checkType = localStorage["CheckSome::url" + urlNumber + "CheckType"];
   switch (checkType) {
     case "exist":
       dataCheck = existCheck(data, urlNumber);
@@ -226,34 +226,32 @@ function checkData(data, urlNumber) {
 }
 
 function deleteURL(urlNumber) {
-  var urlCounter = parseInt(localStorage["urlCounter"]);
+  var urlCounter = parseInt(localStorage["CheckSome::urlCounter"]);
   for (var i = parseInt(urlNumber); i < (urlCounter - 1); i++) {
-    localStorage["url" + i] = localStorage["url" + (i + 1)];
-    localStorage["url" + i + "CheckType"] = localStorage["url" + (i + 1) + "CheckType"];
-    localStorage["url" + i + "CheckString"] = localStorage["url" + (i + 1) + "CheckString"];
-    localStorage["url" + i + "CheckTypeString"] = localStorage["url" + (i + 1) + "CheckTypeString"];
-    localStorage["url" + i + "CheckStatus"] = localStorage["url" + (i + 1) + "CheckStatus"];
+    localStorage["CheckSome::url" + i] = localStorage["CheckSome::url" + (i + 1)];
+    localStorage["CheckSome::url" + i + "CheckType"] = localStorage["CheckSome::url" + (i + 1) + "CheckType"];
+    localStorage["CheckSome::url" + i + "CheckString"] = localStorage["CheckSome::url" + (i + 1) + "CheckString"];
+    localStorage["CheckSome::url" + i + "CheckTypeString"] = localStorage["CheckSome::url" + (i + 1) + "CheckTypeString"];
+    localStorage["CheckSome::url" + i + "CheckStatus"] = localStorage["CheckSome::url" + (i + 1) + "CheckStatus"];
   }
-  localStorage["urlCounter"] = urlCounter - 1;
+  localStorage["CheckSome::urlCounter"] = urlCounter - 1;
 }
 
 function renderURLList() {
   $('#urlList').empty();
-  for (var i = 0; i < parseInt(localStorage["urlCounter"]); i++) {
-    url = localStorage["url" + i];
+  for (var i = 0; i < parseInt(localStorage["CheckSome::urlCounter"]); i++) {
+    url = localStorage["CheckSome::url" + i];
     $('#urlList').append("<div class='checkURL' id='checkURL" + i + "'></div>");
     $('#checkURL' + i).append("<a id='openURL' target='_blank' href='" + url + "'>" + url + "</a>");
     $('#checkURL' + i).append("<div class='checkInfo' id='checkInfo" + i + "'></div>");
     $('#checkInfo' + i).append("<div class='checkStringInfo' id='checkStringInfo" + i + "'></div>");
-    $('#checkStringInfo' + i).append("Checks for string '" + localStorage["url" + i + "CheckString"] + "'<br>to see if it " + localStorage["url" + i + "CheckTypeString"]);
+    $('#checkStringInfo' + i).append("Checks for string '" + localStorage["CheckSome::url" + i + "CheckString"] + "'<br>to see if it " + localStorage["CheckSome::url" + i + "CheckTypeString"]);
     $('#checkInfo' + i).append("<div class='checkStatusInfo' id='checkStatusInfo" + i + "'></div>");
     $('#checkStatusInfo' + i).append("<div id='checkStatus" + i + "'></div>");
     $('#checkURL' + i).append("<button key=" + i + " id='" + url + "' class='btn btn-info'>Check!</button>");
     $('#checkURL' + i).append("<button key=" + i + " id='" + url + "Delete' class='btn btn-danger buttons'>Delete</button>");
   }
-  if (localStorage["urlCounter"] == 0) {
+  if (localStorage["CheckSome::urlCounter"] == 0) {
     $('#urlList').html("<p>There are no URLs.</p>");
   }
 }
-
-//Todo: Move to cheerio

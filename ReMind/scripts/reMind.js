@@ -1,8 +1,8 @@
 $(document).ready(function () {
-  if (isNaN(localStorage["bookmarkCounter"])) {
-    localStorage["bookmarkCounter"] = 0;
-    localStorage["expiryRangeCounter"] = 0;
-    localStorage["notificationRange"] = 7;
+  if (isNaN(localStorage["ReMind::bookmarkCounter"])) {
+    localStorage["ReMind::bookmarkCounter"] = 0;
+    localStorage["ReMind::expiryRangeCounter"] = 0;
+    localStorage["ReMind::notificationRange"] = 7;
   }
   checkExpiryRange();
   renderBookmarkList();
@@ -10,7 +10,7 @@ $(document).ready(function () {
 });
 
 $('#notificationRangeInput').ready(function () {
-  const notificationRange = localStorage["notificationRange"];
+  const notificationRange = localStorage["ReMind::notificationRange"];
   $('#notificationRangeInput').val(notificationRange);
 });
 
@@ -26,12 +26,12 @@ $('#addBookmarkButton').click(function () {
     $('#addStatus').html("<p>Please enter a title.</p>");
   }
   if (checkDate(date)) {
-    bookmarkCounter = localStorage["bookmarkCounter"];
-    localStorage["url" + bookmarkCounter] = url;
-    localStorage["title" + bookmarkCounter] = title;
-    localStorage["date" + bookmarkCounter] = date;
-    console.log(localStorage["title" + bookmarkCounter] + ' has been saved');
-    localStorage["bookmarkCounter"] = parseInt(bookmarkCounter) + 1;
+    bookmarkCounter = localStorage["ReMind::bookmarkCounter"];
+    localStorage["ReMind::url" + bookmarkCounter] = url;
+    localStorage["ReMind::title" + bookmarkCounter] = title;
+    localStorage["ReMind::date" + bookmarkCounter] = date;
+    console.log(localStorage["ReMind::title" + bookmarkCounter] + ' has been saved');
+    localStorage["ReMind::bookmarkCounter"] = parseInt(bookmarkCounter) + 1;
     $('#addStatus').html("<p style='font-weight:bold; font-size: 150%; text-align: center;'>Added!</p>");
   }
   setTimeout(function () {
@@ -42,7 +42,7 @@ $('#addBookmarkButton').click(function () {
 });
 
 $('#notificationRangeButton').click(function () {
-  localStorage["notificationRange"] = $('#notificationRangeInput').val();
+  localStorage["ReMind::notificationRange"] = $('#notificationRangeInput').val();
 });
 
 //Deleting Bookmarks
@@ -93,18 +93,18 @@ $('#showPage').click(function () {
 });
 
 $('#resetButton').click(function () {
-  localStorage["bookmarkCounter"] = 0;
+  localStorage["ReMind::bookmarkCounter"] = 0;
   $('#deleteAllStatus').html("Deleted All.")
   chrome.browserAction.setBadgeText({ text: '' });
 });
 
 function deleteBookmark(bookmarkNumber) {
-  const bookmarkCounter = parseInt(localStorage["bookmarkCounter"]);
+  const bookmarkCounter = parseInt(localStorage["ReMind::bookmarkCounter"]);
   for (let i = parseInt(bookmarkNumber); i < (bookmarkCounter - 1); i++) {
-    localStorage["url" + i] = localStorage["url" + (i + 1)];
-    localStorage["date" + i] = localStorage["date" + (i + 1)];
+    localStorage["ReMind::url" + i] = localStorage["ReMind::url" + (i + 1)];
+    localStorage["ReMind::date" + i] = localStorage["ReMind::date" + (i + 1)];
   }
-  localStorage["bookmarkCounter"] = bookmarkCounter - 1;
+  localStorage["ReMind::bookmarkCounter"] = bookmarkCounter - 1;
   checkExpiryRange();
 }
 
@@ -113,13 +113,13 @@ function renderBookmarkList() {
   $('#expiredBookmarkList').empty();
   let currentDate = new Date();
   currentDate.setDate(currentDate.getDate() - 1);
-  for (let i = 0; i < parseInt(localStorage["bookmarkCounter"]); i++) {
-    const url = localStorage["url" + i];
-    let date = parseIntoBigDate(localStorage["date" + i]);
+  for (let i = 0; i < parseInt(localStorage["ReMind::bookmarkCounter"]); i++) {
+    const url = localStorage["ReMind::url" + i];
+    let date = parseIntoBigDate(localStorage["ReMind::date" + i]);
     const list = currentDate < date ? "activeBookmarkList" : "expiredBookmarkList";
     date = parseIntoSmallDate(date);
     $(`#${list}`).append("<div class='bookmark' id='bookmark" + i + "'></div>");
-    $('#bookmark' + i).append("<a id='openURL' target='_blank' href='" + url + "'>" + localStorage["title" + i] + "</a>");
+    $('#bookmark' + i).append("<a id='openURL' target='_blank' href='" + url + "'>" + localStorage["ReMind::title" + i] + "</a>");
     $('#bookmark' + i).append("<div class='dateInfo' id='dateInfo" + i + "'>Expires: " + date + "</div>");
     $('#bookmark' + i).append("<button key=" + i + " id='" + url + "Delete' class='btn btn-danger buttons'>Delete</button>");
   }
@@ -162,19 +162,19 @@ function checkDate(date) {
 }
 
 function checkExpiryRange() {
-  localStorage["expiryRangeCounter"] = 0;
-  const bookmarkCounter = localStorage["bookmarkCounter"];
+  localStorage["ReMind::expiryRangeCounter"] = 0;
+  const bookmarkCounter = localStorage["ReMind::bookmarkCounter"];
   if (bookmarkCounter == 0) {
-    localStorage["expiryRangeCounter"] = 0;
+    localStorage["ReMind::expiryRangeCounter"] = 0;
     chrome.browserAction.setBadgeText({ text: '' });
   }
   else {
     let expiryDate = new Date();
-    expiryDate.setDate(expiryDate.getDate() + Number(localStorage["notificationRange"]));
+    expiryDate.setDate(expiryDate.getDate() + Number(localStorage["ReMind::notificationRange"]));
     for (let i = 0; i < bookmarkCounter; i++) {
-      const date = parseIntoBigDate(localStorage["date" + i]);
+      const date = parseIntoBigDate(localStorage["ReMind::date" + i]);
       if (expiryDate > date) {
-        localStorage["expiryRangeCounter"] = parseInt(localStorage["expiryRangeCounter"]) + 1;
+        localStorage["ReMind::expiryRangeCounter"] = parseInt(localStorage["ReMind::expiryRangeCounter"]) + 1;
         incrementNotifications();
       }
     }
@@ -184,7 +184,7 @@ function checkExpiryRange() {
 function incrementNotifications() {
   const ba = chrome.browserAction;
   ba.setBadgeBackgroundColor({ color: '#9991BF' });
-  ba.setBadgeText({ text: localStorage["expiryRangeCounter"] });
+  ba.setBadgeText({ text: localStorage["ReMind::expiryRangeCounter"] });
 }
 
 function parseIntoBigDate(date) {
