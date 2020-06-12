@@ -1,44 +1,42 @@
 body {
-	display: flex;
-	flex-direction: column;
-	margin: 5px;
-	padding: 5px;
-	font-family: 'PT Mono', monospace;
-	font-size: 13px;
-	width: 350px;
-	min-height: 80px;
-	background-color: #D8D9E4;
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  padding: 5px;
+  font-family: "PT Mono", monospace;
+  font-size: 13px;
+  width: 350px;
+  min-height: 80px;
+  background-color: #d8d9e4;
 }
 
 button {
-	margin-top: 10px;
-	width: 100%;
+  width: 100%;
 }
 
 .header {
-	display: flex;
-	justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .settings {
-	width: 30px;
-	height: 30px;
-	cursor: pointer;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
 }
 
 .title {
-	font-weight: bold;
+  font-weight: bold;
 }
 
 .contentIcon {
-	height: 96px;
+  height: 96px;
 }
 
-.main button {
-	display: flex;
-	justify-content: space-around;
+.main div {
+  margin-top: 10px;
 }
 
 .main button div {
-	align-self: center;
+  align-self: center;
 }

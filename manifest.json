@@ -1,23 +1,33 @@
 {
-	"manifest_version": 2,
-	"name": "utilities-extensions",
-	"short_name": "utilities-extensions",
-	"version": "1.0.0",
-	"description": "Random functionalities I need.",
-	"icons": {
-		"48": "Main/imgs/icon.png",
-		"96": "Main/imgs/icon.png"
-	},
-	"browser_action": {
-		"default_icon": "Main/imgs/icon.png",
-		"default_popup": "Main/index.html"
-	},
-	"permissions": [
-		"activeTab",
-		"tabs",
-		"storage",
-		"alarms",
-		"http://*/*",
-		"https://*/*"
-	]
+  "manifest_version": 2,
+  "name": "utilities-extensions",
+  "short_name": "utilities-extensions",
+  "version": "1.0.0",
+  "description": "Random functionalities I need.",
+  "icons": {
+    "48": "Main/imgs/icon.png",
+    "96": "Main/imgs/icon.png"
+  },
+  "browser_action": {
+    "default_icon": "Main/imgs/icon.png",
+    "default_popup": "Main/index.html"
+  },
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "storage",
+    "alarms",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "content_scripts": [
+    {
+      "js": [
+        "Main/scripts/libs/jquery-3.5.1.min.js",
+        "YoutubeSpaceDown/scripts/index.js"
+      ],
+      "matches": ["https://*.youtube.com/*"],
+      "run_at": "document_start"
+    }
+  ]
 }
