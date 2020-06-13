@@ -1,75 +1,75 @@
 body {
-	display: flex;
-	flex-direction: column;
-	margin: 5px;
-	padding: 5px;
-	font-family: 'PT Mono', monospace;
-	font-size: 13px;
-	width: 350px;
-	min-height: 80px;
-	background-color: #D8D9E4;
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  padding: 5px;
+  font-family: "PT Mono", monospace;
+  font-size: 13px;
+  width: 350px;
+  min-height: 80px;
+  background-color: #d8d9e4;
 }
 
 .header {
-	display: flex;
-	justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .icon {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .icon img {
-	width: 30px;
-	height: 30px;
+  width: 30px;
+  height: 30px;
 }
 
 .title {
-	font-weight: bold;
+  font-weight: bold;
 }
 
 .nav {
-	margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
-#addBookmark, #settings {
-	display: none;
+#addBookmark,
+#settings {
+  display: flex;
 }
 
-button {
-	width: 100%;
-	margin: 10px 0px 10px 0px;
+button.close {
+  align-self: flex-start;
 }
 
 .bookmark {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	margin-top: 5px;
-	margin-bottom: 5px;
-	border-top: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 5px;
+  margin-bottom: 5px;
+  border-top: 1px solid black;
 }
 
 .addBookmark {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .inputGroup {
-	display: flex;
+  display: flex;
 }
 
-.addFields, .setting {
-	display: flex;
-	flex-direction: column;
-	margin-bottom: 10px;
+.addFields,
+.setting {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
 }
 
 .addStatus {
-	margin: auto;
+  margin: auto;
 }
 
 .bookmarkList {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
