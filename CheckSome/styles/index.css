@@ -1,94 +1,97 @@
 body {
-	display: flex;
-	flex-direction: column;
-	margin: 5px;
-	padding: 5px;
-	font-family: 'PT Mono', monospace;
-	font-size: 13px;
-	width: 350px;
-	min-height: 80px;
-	background-color: #D8D9E4;
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  padding: 5px;
+  font-family: "PT Mono", monospace;
+  font-size: 13px;
+  width: 350px;
+  min-height: 80px;
+  background-color: #d8d9e4;
 }
 
 .header {
-	display: flex;
-	justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .icon {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .icon img {
-	width: 30px;
-	height: 30px;
+  width: 30px;
+  height: 30px;
 }
 
 .title {
-	font-weight: bold;
+  font-weight: bold;
 }
 
-#addURL, #settings {
-	display: none;
+#addURL,
+#settings {
+  display: none;
 }
 
 .nav {
-	margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .checkURL {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	margin-top: 5px;
-	margin-bottom: 5px;
-	border-top: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-top: 1px solid black;
 }
 
 .addURL {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 input[type="radio"] {
-	margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 .inputGroup {
-	display: flex;
+  display: flex;
 }
 
 .addFields {
-	display: flex;
-	flex-direction: column;
-	margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
 }
 
 .addStatus {
-	margin: auto;
+  margin: auto;
+  font-weight: bold;
+  font-size: 150%;
 }
 
 .redirectButtons {
-	margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 .urlList {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .checkInfo {
-	display: flex;
+  display: flex;
 }
 
 .checkStatusInfo {
-	position: absolute;
-	margin-left: 200px;
-	margin-top: 20px;
-	font-weight: bold;
+  position: absolute;
+  margin-left: 200px;
+  margin-top: 20px;
+  font-weight: bold;
 }
 
 button {
-	width: 100%;
-	margin: 10px 0px 10px 0px;
+  width: 100%;
+  margin: 10px 0px 10px 0px;
 }
