@@ -8,7 +8,7 @@ function doKeyPress(e) {
       document.documentElement.clientHeight ||
       document.body.clientHeight;
 
-    if (!window.location.pathname.includes("watch")) {
+    if (shouldScrollDown()) {
       if (e.shiftKey && e.keyCode === space_key) {
         window.scrollBy({
           top: -height,
@@ -23,6 +23,13 @@ function doKeyPress(e) {
     }
   }
 }
+
+const shouldScrollDown = () => {
+  return (
+    !window.location.pathname.includes("watch") &&
+    document.activeElement.id !== "search"
+  );
+};
 
 chrome.runtime.onMessage.addListener(function (message) {
   localStorage.setItem(
