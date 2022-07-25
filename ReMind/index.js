@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$.when($.ready).then(function () {
   if (isNaN(localStorage["ReMind::bookmarkCounter"])) {
     localStorage["ReMind::bookmarkCounter"] = 0;
     localStorage["ReMind::expiryRangeCounter"] = 0;
@@ -10,12 +10,12 @@ $(document).ready(function () {
   getCurrentTabInfo();
 });
 
-$("#notificationRangeInput").ready(function () {
+$("#notificationRangeInput").on("ready", function () {
   const notificationRange = localStorage["ReMind::notificationRange"];
   $("#notificationRangeInput").val(notificationRange);
 });
 
-$("#addBookmarkButton").click(function () {
+$("#addBookmarkButton").on("click", function () {
   $("#addStatus").html("<p>Adding... Do not make any changes.</p>");
   let url = $("#urlInput").val();
   const title = $("#titleInput").val();
@@ -46,7 +46,7 @@ $("#addBookmarkButton").click(function () {
   renderBookmarkList();
 });
 
-$("#notificationRangeButton").click(function () {
+$("#notificationRangeButton").on("click", function () {
   localStorage["ReMind::notificationRange"] = $(
     "#notificationRangeInput"
   ).val();
@@ -62,44 +62,44 @@ $("#bookmarkList").on("click", "button", function () {
   }
 });
 
-$("#urlInput").keyup(function (event) {
+$("#urlInput").on("keyup", function (event) {
   if (event.keyCode == 13) {
-    $("#addBookmarkButton").click();
+    $("#addBookmarkButton").trigger("click");
   }
 });
 
-$("#remindDateInput").keyup(function (event) {
+$("#remindDateInput").on("keyup", function (event) {
   if (event.keyCode == 13) {
-    $("#addBookmarkButton").click();
+    $("#addBookmarkButton").trigger("click");
   }
 });
 
-$("#indexPage").click(function () {
+$("#indexPage").on("click", function () {
   window.location = "../Main/index.html";
 });
 
-$("#settingsPage").click(function () {
+$("#settingsPage").on("click", function () {
   $("#settings").show();
   $("#ReMind").hide();
   checkExpiryRange();
 });
 
-$("#homePage").click(function () {
+$("#homePage").on("click", function () {
   $("#ReMind").show();
   $("#settings").hide();
 });
 
-$("#addPage").click(function () {
+$("#addPage").on("click", function () {
   $("#addBookmark").show();
   $("#bookmarkList").hide();
 });
 
-$("#showPage").click(function () {
+$("#showPage").on("click", function () {
   $("#bookmarkList").show();
   $("#addBookmark").hide();
 });
 
-$("#resetButton").click(function () {
+$("#resetButton").on("click", function () {
   localStorage["ReMind::bookmarkCounter"] = 0;
   $("#deleteAllStatus").html("Deleted All.");
   chrome.browserAction.setBadgeText({ text: "" });

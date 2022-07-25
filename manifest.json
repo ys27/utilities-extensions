@@ -17,17 +17,18 @@
     "tabs",
     "storage",
     "alarms",
+    "contextMenus",
     "http://*/*",
     "https://*/*"
   ],
   "content_scripts": [
     {
-      "js": [
-        "Main/scripts/libs/jquery-3.5.1.min.js",
-        "YoutubeSpaceDown/scripts/index.js"
-      ],
+      "js": ["libs/jquery-3.6.0.min.js", "YoutubeSpaceDown/index.js"],
       "matches": ["https://*.youtube.com/*"],
       "run_at": "document_start"
     }
-  ]
+  ],
+  "background": {
+    "scripts": ["libs/jquery-3.6.0.min.js", "Main/index.js"]
+  }
 }

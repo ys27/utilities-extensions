@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$.when($.ready).then(function () {
   if (isNaN(localStorage["CheckSome::urlCounter"])) {
     localStorage["CheckSome::urlCounter"] = 0;
   }
@@ -6,7 +6,7 @@ $(document).ready(function () {
   getCurrentTabInfo();
 });
 
-$("#addURLButton").click(function () {
+$("#addURLButton").on("click", function () {
   $("#addStatus").html("<p>Adding... Do not make any changes.</p>");
   let url = $("#urlInput").val();
   if (!url.startsWith("http")) {
@@ -82,39 +82,39 @@ $("#urlList").on("click", "button", function () {
   }
 });
 
-$("#exist").keyup(function (event) {
+$("#exist").on("keyup", function (event) {
   if (event.keyCode == 13) {
-    $("#addURLButton").click();
+    $("#addURLButton").trigger("click");
   }
 });
 
-$("#indexPage").click(function () {
+$("#indexPage").on("click", function () {
   window.location = "../Main/index.html";
 });
 
-$("#settingsPage").click(function () {
+$("#settingsPage").on("click", function () {
   $("#settings").show();
   $("#CheckSome").hide();
 });
 
-$("#homePage").click(function () {
+$("#homePage").on("click", function () {
   $("#CheckSome").show();
   $("#settings").hide();
   renderURLList();
 });
 
-$("#addPage").click(function () {
+$("#addPage").on("click", function () {
   $("#addURL").show();
   $("#URLList").hide();
 });
 
-$("#showPage").click(function () {
+$("#showPage").on("click", function () {
   $("#URLList").show();
   $("#addURL").hide();
   renderURLList();
 });
 
-$("#resetButton").click(function () {
+$("#resetButton").on("click", function () {
   localStorage["CheckSome::urlCounter"] = 0;
   $("#deleteAllStatus").html("Deleted All.");
 });

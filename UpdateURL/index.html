@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+
+    <script src="../libs/jquery-3.6.0.min.js"></script>
+    <script src="../libs/popper.min.js"></script>
+    <script src="../libs/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../libs/bootstrap.min.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=PT+Mono"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div id="UpdateURL">
+      <div class="header">
+        <h3 class="title">UpdateURL</h3>
+        <div>
+          <a class="icon" id="indexPage"><img src="../Main/imgs/home.png" /></a>
+        </div>
+      </div>
+      <p>Update parts of the URL in the current tab or all tabs.</p>
+      <ul class="nav nav-pills nav-fill">
+        <li class="nav-item">
+          <a class="nav-link active" href="#" data-toggle="pill" id="currentTab"
+            >Current Tab</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" data-toggle="pill" id="allTabs"
+            >All Tabs</a
+          >
+        </li>
+      </ul>
+      <div class="updateURL" id="updateURL">
+        <span id="currentURL"></span>
+        <div class="replaceInput">
+          <label>Replace:</label>
+          <input
+            type="text"
+            class="input"
+            id="replaceInput"
+            autofocus="autofocus"
+          />
+        </div>
+        <div class="withInput">
+          <label>With:</label>
+          <input
+            type="text"
+            class="input"
+            id="withInput"
+            autofocus="autofocus"
+          />
+        </div>
+        <button class="btn btn-success" id="updateURLButton">Update</button>
+        <div class="updateStatus" id="updateStatus"></div>
+      </div>
+    </div>
+  </body>
+  <script src="index.js"></script>
+</html>
