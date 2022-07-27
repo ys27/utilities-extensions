@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "utilities-extensions",
   "short_name": "utilities-extensions",
   "version": "1.0.0",
@@ -8,27 +8,10 @@
     "48": "Main/imgs/icon.png",
     "96": "Main/imgs/icon.png"
   },
-  "browser_action": {
+  "action": {
     "default_icon": "Main/imgs/icon.png",
     "default_popup": "Main/index.html"
   },
-  "permissions": [
-    "activeTab",
-    "tabs",
-    "storage",
-    "alarms",
-    "contextMenus",
-    "http://*/*",
-    "https://*/*"
-  ],
-  "content_scripts": [
-    {
-      "js": ["libs/jquery-3.6.0.min.js", "YoutubeSpaceDown/index.js"],
-      "matches": ["https://*.youtube.com/*"],
-      "run_at": "document_start"
-    }
-  ],
-  "background": {
-    "scripts": ["libs/jquery-3.6.0.min.js", "Main/index.js"]
-  }
+  "permissions": ["activeTab", "tabs", "storage", "alarms", "contextMenus"],
+  "host_permissions": ["http://*/*", "https://*/*"]
 }
