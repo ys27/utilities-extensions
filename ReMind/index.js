@@ -5,26 +5,26 @@ $.when($.ready).then(function () {
     localStorage["ReMind::notificationRange"] = 7;
   }
   checkExpiryRange();
-  $("#addBookmark, #settings").hide();
+  $("#add-bookmark, #settings").hide();
   renderBookmarkList();
   getCurrentTabInfo();
 });
 
-$("#notificationRangeInput").on("ready", function () {
+$("#notification-range-input").on("ready", function () {
   const notificationRange = localStorage["ReMind::notificationRange"];
-  $("#notificationRangeInput").val(notificationRange);
+  $("#notification-range-input").val(notificationRange);
 });
 
-$("#addBookmarkButton").on("click", function () {
-  $("#addStatus").html("<p>Adding... Do not make any changes.</p>");
-  let url = $("#urlInput").val();
-  const title = $("#titleInput").val();
-  const date = $("#remindDateInput").val();
+$("#add-bookmark-button").on("click", function () {
+  $("#add-status").html("<p>Adding... Do not make any changes.</p>");
+  let url = $("#url-input").val();
+  const title = $("#title-input").val();
+  const date = $("#remind-date-input").val();
   if (!url.startsWith("http")) {
     url = `http://${url}`;
   }
-  if (!$("#titleInput").val()) {
-    $("#addStatus").html("<p>Please enter a title.</p>");
+  if (!$("#title-input").val()) {
+    $("#add-status").html("<p>Please enter a title.</p>");
   }
   if (checkDate(date)) {
     bookmarkCounter = localStorage["ReMind::bookmarkCounter"];
@@ -35,25 +35,25 @@ $("#addBookmarkButton").on("click", function () {
       `${localStorage[`ReMind::title${bookmarkCounter}`]} has been saved`
     );
     localStorage["ReMind::bookmarkCounter"] = parseInt(bookmarkCounter) + 1;
-    $("#addStatus").html(
+    $("#add-status").html(
       "<p style='font-weight:bold; font-size: 150%; text-align: center;'>Added!</p>"
     );
   }
   setTimeout(function () {
-    $("#addStatus").empty();
+    $("#add-status").empty();
   }, 2000);
   checkExpiryRange();
   renderBookmarkList();
 });
 
-$("#notificationRangeButton").on("click", function () {
+$("#notification-range-button").on("click", function () {
   localStorage["ReMind::notificationRange"] = $(
-    "#notificationRangeInput"
+    "#notification-range-input"
   ).val();
 });
 
 //Deleting Bookmarks
-$("#bookmarkList").on("click", "button", function () {
+$("#bookmark-list").on("click", "button", function () {
   const id = $(this).attr("id");
   const bookmarkNumber = $(this).attr("key");
   if (id.endsWith("Delete")) {
@@ -62,15 +62,15 @@ $("#bookmarkList").on("click", "button", function () {
   }
 });
 
-$("#urlInput").on("keyup", function (event) {
+$("#url-input").on("keyup", function (event) {
   if (event.keyCode == 13) {
-    $("#addBookmarkButton").trigger("click");
+    $("#add-bookmark-button").trigger("click");
   }
 });
 
-$("#remindDateInput").on("keyup", function (event) {
+$("#remind-date-input").on("keyup", function (event) {
   if (event.keyCode == 13) {
-    $("#addBookmarkButton").trigger("click");
+    $("#add-bookmark-button").trigger("click");
   }
 });
 
@@ -84,24 +84,24 @@ $("#settingsPage").on("click", function () {
   checkExpiryRange();
 });
 
-$("#homePage").on("click", function () {
+$("#home-page").on("click", function () {
   $("#ReMind").show();
   $("#settings").hide();
 });
 
-$("#addPage").on("click", function () {
-  $("#addBookmark").show();
-  $("#bookmarkList").hide();
+$("#add-page").on("click", function () {
+  $("#add-bookmark").show();
+  $("#bookmark-list").hide();
 });
 
-$("#showPage").on("click", function () {
-  $("#bookmarkList").show();
-  $("#addBookmark").hide();
+$("#show-page").on("click", function () {
+  $("#bookmark-list").show();
+  $("#add-bookmark").hide();
 });
 
-$("#resetButton").on("click", function () {
+$("#reset-button").on("click", function () {
   localStorage["ReMind::bookmarkCounter"] = 0;
-  $("#deleteAllStatus").html("Deleted All.");
+  $("#delete-all-status").html("Deleted All.");
   chrome.browserAction.setBadgeText({ text: "" });
 });
 
@@ -116,15 +116,15 @@ function deleteBookmark(bookmarkNumber) {
 }
 
 function renderBookmarkList() {
-  $("#activeBookmarkList").empty();
-  $("#expiredBookmarkList").empty();
+  $("#active-bookmark-list").empty();
+  $("#expired-bookmark-list").empty();
   let currentDate = new Date();
   currentDate.setDate(currentDate.getDate() - 1);
   for (let i = 0; i < parseInt(localStorage["ReMind::bookmarkCounter"]); i++) {
     const url = localStorage[`ReMind::url${i}`];
     let date = parseIntoBigDate(localStorage[`ReMind::date${i}`]);
     const list =
-      currentDate < date ? "activeBookmarkList" : "expiredBookmarkList";
+      currentDate < date ? "active-bookmark-list" : "expired-bookmark-list";
     date = parseIntoSmallDate(date);
     $(`#${list}`).append(`<div class='bookmark' id='bookmark${i}'></div>`);
     $(`#bookmark${i}`).append(
@@ -141,37 +141,37 @@ function renderBookmarkList() {
       </button>`
     );
   }
-  if ($("#activeBookmarkList").children().length === 0) {
-    $("#activeBookmarkList").html("<p>There are no active bookmarks.</p>");
+  if ($("#active-bookmark-list").children().length === 0) {
+    $("#active-bookmark-list").html("<p>There are no active bookmarks.</p>");
   }
-  if ($("#expiredBookmarkList").children().length === 0) {
-    $("#expiredBookmarkList").html("<p>There are no expired bookmarks.</p>");
+  if ($("#expired-bookmark-list").children().length === 0) {
+    $("#expired-bookmark-list").html("<p>There are no expired bookmarks.</p>");
   }
 }
 
 function getCurrentTabInfo() {
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-    $("#urlInput").val(tabs[0].url);
-    $("#titleInput").val(tabs[0].title);
+    $("#url-input").val(tabs[0].url);
+    $("#title-input").val(tabs[0].title);
   });
   let currentDate = new Date();
   let month = currentDate.getMonth() + 1;
   if (month < 10) {
     month = "0" + month;
   }
-  $("#remindDateInput").val(parseIntoSmallDate(currentDate));
+  $("#remind-date-input").val(parseIntoSmallDate(currentDate));
 }
 
 function checkDate(date) {
   let currentDate = new Date();
   currentDate.setDate(currentDate.getDate() - 1);
   if (!date) {
-    $("#addStatus").html("<p>Please enter a date.</p>");
+    $("#add-status").html("<p>Please enter a date.</p>");
     return false;
   } else {
     const givenDate = parseIntoBigDate(date);
     if (currentDate > givenDate) {
-      $("#addStatus").html("<p>Please enter a date in the future.</p>");
+      $("#add-status").html("<p>Please enter a date in the future.</p>");
       return false;
     }
   }

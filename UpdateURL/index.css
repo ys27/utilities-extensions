@@ -32,30 +32,21 @@ body {
   margin-bottom: 10px;
 }
 
-#updateURL {
-  display: flex;
-}
-
 button.close {
   align-self: flex-start;
 }
 
-.updateURL {
+.update-url {
   display: flex;
   flex-direction: column;
 }
 
-.inputGroup {
-  display: flex;
-}
-
-.replaceInput,
-.withInput {
+.input-group {
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
 }
 
-.updateStatus {
+.update-status {
   margin: auto;
 }

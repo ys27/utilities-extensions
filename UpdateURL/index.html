@@ -10,53 +10,46 @@
 
     <link
       href="https://fonts.googleapis.com/css?family=PT+Mono"
-      rel="stylesheet"
-    />
+      rel="stylesheet" />
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <div id="UpdateURL">
+    <div>
       <div class="header">
         <h3 class="title">UpdateURL</h3>
         <div>
-          <a class="icon" id="indexPage"><img src="../Main/imgs/home.png" /></a>
+          <a class="icon" id="index-page"
+            ><img src="../Main/imgs/home.png"
+          /></a>
         </div>
       </div>
-      <p>Update parts of the URL in the current tab or all tabs.</p>
       <ul class="nav nav-pills nav-fill">
         <li class="nav-item">
-          <a class="nav-link active" href="#" data-toggle="pill" id="currentTab"
-            >Current Tab</a
+          <a
+            class="nav-link active"
+            href="#"
+            data-toggle="pill"
+            id="update-number"
+            >Update number</a
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" data-toggle="pill" id="allTabs"
-            >All Tabs</a
+          <a class="nav-link" href="#" data-toggle="pill" id="replace-text"
+            >Replace text</a
           >
         </li>
       </ul>
-      <div class="updateURL" id="updateURL">
-        <span id="currentURL"></span>
-        <div class="replaceInput">
-          <label>Replace:</label>
-          <input
-            type="text"
-            class="input"
-            id="replaceInput"
-            autofocus="autofocus"
-          />
+      <div class="update-url" id="update-url">
+        <div class="input-group">
+          <label id="input1Label">Prefix:</label>
+          <input type="text" class="input" id="input1" autofocus="autofocus" />
         </div>
-        <div class="withInput">
-          <label>With:</label>
-          <input
-            type="text"
-            class="input"
-            id="withInput"
-            autofocus="autofocus"
-          />
+        <div class="input-group">
+          <label id="input2Label">New number:</label>
+          <input type="text" class="input" id="input2" autofocus="autofocus" />
         </div>
-        <button class="btn btn-success" id="updateURLButton">Update</button>
-        <div class="updateStatus" id="updateStatus"></div>
+        <button class="btn btn-success" id="update-url-button">Update</button>
+        <div class="update-status" id="update-status"></div>
       </div>
     </div>
   </body>

@@ -1,56 +1,58 @@
-let currentOrAllTabs = "CURRENT";
+let mode = 'UPDATE_NUMBER';
 
-$.when($.ready).then(function () {
-  getCurrentTabInfo();
+$('#index-page').on('click', function () {
+  window.location = '../Main/index.html';
 });
 
-$("#indexPage").on("click", function () {
-  window.location = "../Main/index.html";
+$('#update-number').on('click', function () {
+  mode = 'UPDATE_NUMBER';
+  $('#input1Label').html('Prefix:');
+  $('#input2Label').html('New number:');
 });
 
-$("#currentTab").on("click", function () {
-  currentOrAllTabs = "CURRENT";
-  getCurrentTabInfo();
+$('#replace-text').on('click', function () {
+  mode = 'REPLACE_TEXT';
+  $('#input1Label').html('Replace:');
+  $('#input2Label').html('With:');
 });
 
-$("#allTabs").on("click", function () {
-  currentOrAllTabs = "ALL";
-  $("#currentURL").html("");
-});
-
-$("#withInput").on("keyup", function (event) {
+$('#input2').on('keyup', function (event) {
   if (event.keyCode == 13) {
-    $("#updateURLButton").trigger("click");
+    $('#update-url-button').trigger('click');
   }
 });
 
-$("#updateURLButton").on("click", function () {
-  const replaceInput = $("#replaceInput").val();
-  const withInput = $("#withInput").val();
+$('#update-url-button').on('click', function () {
+  const input1Val = $('#input1').val();
+  const input2Val = $('#input2').val();
 
-  if (currentOrAllTabs === "CURRENT") {
-    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-      if (tabs[0].url.includes(replaceInput)) {
-        chrome.tabs.update({
-          url: tabs[0].url.replace(replaceInput, withInput),
-        });
-      }
-    });
-  } else if (currentOrAllTabs === "ALL") {
+  if (mode === 'UPDATE_NUMBER') {
     chrome.tabs.query({}, function (tabs) {
       tabs.forEach(function (tab) {
-        if (tab.url.includes(replaceInput)) {
+        const hostname = new URL(tab.url).hostname
+          .replace(/^(?:https?:\/\/)?(?:www\.)?/i, '')
+          .split('.')[0];
+        const [prefix, oldNumber] = hostname.match(/[a-z]+|[^a-z]+/gi);
+        if (prefix === input1Val && oldNumber !== input2Val) {
           chrome.tabs.update(tab.id, {
-            url: tab.url.replace(replaceInput, withInput),
+            url: tab.url.replace(hostname, `${prefix}${input2Val}`),
+          });
+        }
+      });
+    });
+  } else if (mode === 'REPLACE_TEXT') {
+    chrome.tabs.query({}, function (tabs) {
+      tabs.forEach(function (tab) {
+        if (tab.url.includes(input1Val)) {
+          chrome.tabs.update(tab.id, {
+            url: tab.url.replace(input1Val, input2Val),
           });
         }
       });
     });
   }
+  $('#update-status').html('Updated!');
+  setTimeout(() => {
+    $('#update-status').html('');
+  }, 3000);
 });
-
-function getCurrentTabInfo() {
-  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-    $("#currentURL").html(tabs[0].url);
-  });
-}

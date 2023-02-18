@@ -6,15 +6,15 @@ $.when($.ready).then(function () {
   getCurrentTabInfo();
 });
 
-$("#addURLButton").on("click", function () {
-  $("#addStatus").html("<p>Adding... Do not make any changes.</p>");
-  let url = $("#urlInput").val();
+$("#add-url-button").on("click", function () {
+  $("#add-status").html("<p>Adding... Do not make any changes.</p>");
+  let url = $("#url-input").val();
   if (!url.startsWith("http")) {
     url = `http://${url}`;
   }
   const checkString = $(`#checkString`).val();
   if (!checkString) {
-    $("#addStatus").html("<p>What should we check for?</p>");
+    $("#add-status").html("<p>What should we check for?</p>");
   } else {
     $.ajax({
       url: url,
@@ -25,20 +25,20 @@ $("#addURLButton").on("click", function () {
         localStorage[`CheckSome::url${urlCounter}CheckString`] = checkString;
         console.log(`${url} has been saved`);
         localStorage["CheckSome::urlCounter"] = parseInt(urlCounter) + 1;
-        $("#addStatus").html("<p class='addStatus'>Added!</p>");
+        $("#add-status").html("<p class='add-status'>Added!</p>");
         setTimeout(function () {
-          $("#addStatus").empty();
+          $("#add-status").empty();
         }, 2000);
       },
       error: function (e) {
         console.log("Error: Not a valid URL.");
-        $("#addStatus").html("<p class='addStatus'>Not a valid URL.</p>");
+        $("#add-status").html("<p class='add-status'>Not a valid URL.</p>");
       },
     });
   }
 });
 
-$("#urlList").on("click", "button", function () {
+$("#url-list").on("click", "button", function () {
   const id = $(this).attr("id");
   const urlNumber = $(this).attr("key");
   if (id.endsWith("Delete")) {
@@ -84,7 +84,7 @@ $("#urlList").on("click", "button", function () {
 
 $("#exist").on("keyup", function (event) {
   if (event.keyCode == 13) {
-    $("#addURLButton").trigger("click");
+    $("#add-url-button").trigger("click");
   }
 });
 
@@ -97,31 +97,31 @@ $("#settingsPage").on("click", function () {
   $("#CheckSome").hide();
 });
 
-$("#homePage").on("click", function () {
+$("#home-page").on("click", function () {
   $("#CheckSome").show();
   $("#settings").hide();
   renderURLList();
 });
 
-$("#addPage").on("click", function () {
-  $("#addURL").show();
-  $("#URLList").hide();
+$("#add-page").on("click", function () {
+  $("#add-url").show();
+  $("#content").hide();
 });
 
-$("#showPage").on("click", function () {
-  $("#URLList").show();
-  $("#addURL").hide();
+$("#show-page").on("click", function () {
+  $("#content").show();
+  $("#add-url").hide();
   renderURLList();
 });
 
-$("#resetButton").on("click", function () {
+$("#reset-button").on("click", function () {
   localStorage["CheckSome::urlCounter"] = 0;
-  $("#deleteAllStatus").html("Deleted All.");
+  $("#delete-all-status").html("Deleted All.");
 });
 
 function getCurrentTabInfo() {
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-    $("#urlInput").val(tabs[0].url);
+    $("#url-input").val(tabs[0].url);
   });
 }
 
@@ -160,36 +160,36 @@ function deleteURL(urlNumber) {
 }
 
 function renderURLList() {
-  $("#urlList").empty();
+  $("#url-list").empty();
   for (let i = 0; i < parseInt(localStorage["CheckSome::urlCounter"]); i++) {
     url = localStorage[`CheckSome::url${i}`];
-    $("#urlList").append(`<div class='checkURL' id='checkURL${i}'></div>`);
-    $(`#checkURL${i}`).append(
+    $("#url-list").append(`<div class='check-url' id='check-url-${i}'></div>`);
+    $(`#check-url-${i}`).append(
       `<a id='openURL' target='_blank' href='${url}'>${url}</a>`
     );
-    $(`#checkURL${i}`).append(
-      `<div class='checkInfo' id='checkInfo${i}'></div>`
+    $(`#check-url-${i}`).append(
+      `<div class='check-info' id='check-info${i}'></div>`
     );
-    $(`#checkInfo${i}`).append(
-      `<div class='checkStringInfo' id='checkStringInfo${i}'></div>`
+    $(`#check-info${i}`).append(
+      `<div class='check-string-info' id='check-string-info-${i}'></div>`
     );
-    $(`#checkStringInfo${i}`).append(
+    $(`#check-string-info-${i}`).append(
       `Checks for string '${
         localStorage[`CheckSome::url${i}CheckString`]
       }'<br>to see if it exists`
     );
-    $(`#checkInfo${i}`).append(
-      `<div class='checkStatusInfo' id='checkStatusInfo${i}'></div>`
+    $(`#check-info${i}`).append(
+      `<div class='check-status-info' id='check-status-info${i}'></div>`
     );
-    $(`#checkStatusInfo${i}`).append(`<div id='checkStatus${i}'></div>`);
-    $(`#checkURL${i}`).append(
+    $(`#check-status-info${i}`).append(`<div id='checkStatus${i}'></div>`);
+    $(`#check-url-${i}`).append(
       `<button key=${i} id='${url}' class='btn btn-info'>Check!</button>`
     );
-    $(`#checkURL${i}`).append(
+    $(`#check-url-${i}`).append(
       `<button key=${i} id='${url}Delete' class='btn btn-danger buttons'>Delete</button>`
     );
   }
   if (localStorage["CheckSome::urlCounter"] == 0) {
-    $("#urlList").html("<p>There are no URLs.</p>");
+    $("#url-list").html("<p>There are no URLs.</p>");
   }
 }

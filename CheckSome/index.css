@@ -28,7 +28,7 @@ body {
   font-weight: bold;
 }
 
-#addURL,
+#add-url,
 #settings {
   display: none;
 }
@@ -37,7 +37,7 @@ body {
   margin-bottom: 10px;
 }
 
-.checkURL {
+.check-url {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -46,7 +46,7 @@ body {
   border-top: 1px solid black;
 }
 
-.addURL {
+.add-url {
   display: flex;
   flex-direction: column;
 }
@@ -55,36 +55,32 @@ input[type="radio"] {
   margin-bottom: 5px;
 }
 
-.inputGroup {
-  display: flex;
-}
-
-.addFields {
+.add-fields {
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
 }
 
-.addStatus {
+.add-status {
   margin: auto;
   font-weight: bold;
   font-size: 150%;
 }
 
-.redirectButtons {
+.redirect-buttons {
   margin-bottom: 5px;
 }
 
-.urlList {
+.url-list {
   display: flex;
   flex-direction: column;
 }
 
-.checkInfo {
+.check-info {
   display: flex;
 }
 
-.checkStatusInfo {
+.check-status-info {
   position: absolute;
   margin-left: 200px;
   margin-top: 20px;

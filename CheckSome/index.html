@@ -10,12 +10,11 @@
 
     <link
       href="https://fonts.googleapis.com/css?family=PT+Mono"
-      rel="stylesheet"
-    />
+      rel="stylesheet" />
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <div id="CheckSome">
+    <div>
       <div class="header">
         <h3 class="title">CheckSome</h3>
         <div>
@@ -31,49 +30,48 @@
       </p>
       <ul class="nav nav-pills nav-fill">
         <li class="nav-item">
-          <a class="nav-link active" href="#" data-toggle="pill" id="showPage"
+          <a class="nav-link active" href="#" data-toggle="pill" id="show-page"
             >Saved URLs</a
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" data-toggle="pill" id="addPage"
+          <a class="nav-link" href="#" data-toggle="pill" id="add-page"
             >Add URL</a
           >
         </li>
       </ul>
-      <div id="URLList">
+      <div id="content">
         <h4>Saved URLs</h4>
-        <div id="urlList" class="urlList"></div>
+        <div id="url-list" class="url-list"></div>
       </div>
-      <div class="addURL" id="addURL">
-        <div class="addFields">
+      <div class="add-url" id="add-url">
+        <div class="add-fields">
           <label>URL:</label>
-          <input type="text" class="input" id="urlInput" tabindex="1" />
+          <input type="text" class="input" id="url-input" tabindex="1" />
         </div>
-        <div class="addFields">
+        <div class="add-fields">
           <span class="subText">Text to check:</span>
           <input
             type="text"
             class="input"
             id="checkString"
             autofocus="autofocus"
-            tabindex="2"
-          />
+            tabindex="2" />
         </div>
-        <button class="btn btn-success" id="addURLButton" tabindex="4">
+        <button class="btn btn-success" id="add-url-button" tabindex="4">
           Add
         </button>
-        <div class="addStatus" id="addStatus"></div>
+        <div class="add-status" id="add-status"></div>
       </div>
     </div>
     <div id="settings">
       <div class="header">
         <h3 class="title">Settings</h3>
-        <a class="icon" id="homePage"><img src="../Main/imgs/home.png" /></a>
+        <a class="icon" id="home-page"><img src="../Main/imgs/home.png" /></a>
       </div>
       <div class="setting">
-        <button class="btn btn-danger" id="resetButton">Delete URL List</button>
-        <div class="deleteAllStatus" id="deleteAllStatus"></div>
+        <button class="btn btn-danger" id="reset-button">Delete URL List</button>
+        <div class="delete-all-status" id="delete-all-status"></div>
       </div>
     </div>
   </body>

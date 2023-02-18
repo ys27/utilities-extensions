@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <div id="ReMind">
+    <div>
       <div class="header">
         <h3 class="title">ReMind</h3>
         <div>
@@ -31,64 +31,64 @@
       </p>
       <ul class="nav nav-pills nav-fill">
         <li class="nav-item">
-          <a class="nav-link active" href="#" data-toggle="pill" id="showPage"
+          <a class="nav-link active" href="#" data-toggle="pill" id="show-page"
             >Bookmarks</a
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" data-toggle="pill" id="addPage"
+          <a class="nav-link" href="#" data-toggle="pill" id="add-page"
             >Add Bookmark</a
           >
         </li>
       </ul>
-      <div id="bookmarkList">
+      <div id="bookmark-list">
         <div>
           <h4>Active</h4>
-          <div id="activeBookmarkList" class="bookmarkList"></div>
+          <div id="active-bookmark-list" class="bookmark-list"></div>
         </div>
         <div>
           <h4>Expired</h4>
-          <div id="expiredBookmarkList" class="bookmarkList"></div>
+          <div id="expired-bookmark-list" class="bookmark-list"></div>
         </div>
       </div>
-      <div class="addBookmark" id="addBookmark">
-        <div class="addFields">
+      <div class="add-bookmark" id="add-bookmark">
+        <div class="add-fields">
           <label>URL:</label>
           <input
             type="text"
             class="input"
-            id="urlInput"
+            id="url-input"
             autofocus="autofocus"
           />
         </div>
-        <div class="addFields">
+        <div class="add-fields">
           <label>Title:</label>
-          <input type="text" class="input" id="titleInput" />
+          <input type="text" class="input" id="title-input" />
         </div>
-        <div class="addFields">
+        <div class="add-fields">
           <label>Remind Date:</label>
-          <input type="date" id="remindDateInput" />
+          <input type="date" id="remind-date-input" />
         </div>
-        <button class="btn btn-success" id="addBookmarkButton">Add</button>
-        <div class="addStatus" id="addStatus"></div>
+        <button class="btn btn-success" id="add-bookmark-button">Add</button>
+        <div class="add-status" id="add-status"></div>
       </div>
     </div>
     <div id="settings">
       <div class="header">
         <h3 class="title">Settings</h3>
-        <a class="icon" id="homePage"><img src="../Main/imgs/home.png" /></a>
+        <a class="icon" id="home-page"><img src="../Main/imgs/home.png" /></a>
       </div>
       <div class="setting">
         <label>Count for how many days in advance?</label>
-        <input type="number" id="notificationRangeInput" />
-        <button class="btn btn-success" id="notificationRangeButton">
+        <input type="number" id="notification-range-input" />
+        <button class="btn btn-success" id="notification-range-button">
           Update
         </button>
       </div>
-      <button class="btn btn-danger" id="resetButton">
+      <button class="btn btn-danger" id="reset-button">
         Delete All Bookmarks
       </button>
-      <div class="deleteAllStatus" id="deleteAllStatus"></div>
+      <div class="delete-all-status" id="delete-all-status"></div>
     </div>
   </body>
   <script src="index.js"></script>
