@@ -13,5 +13,12 @@
     "default_popup": "Main/index.html"
   },
   "permissions": ["activeTab", "tabs", "storage", "alarms", "contextMenus"],
-  "host_permissions": ["http://*/*", "https://*/*"]
+  "host_permissions": ["http://*/*", "https://*/*"],
+  "content_scripts": [
+    {
+      "js": ["libs/jquery-3.6.0.min.js", "Main/contentScript.js"],
+      "matches": ["https://*/*", "http://*/*"],
+      "run_at": "document_start"
+    }
+  ]
 }
